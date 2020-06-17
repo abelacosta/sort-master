@@ -7,8 +7,10 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Graph />
-      <ToolPanel />
+      <div className="d-flex justify-content-center">
+        <Graph/>
+        <ToolPanel />
+      </div>
     </div>
   );
 }

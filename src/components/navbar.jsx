@@ -5,10 +5,14 @@ class NavBar extends Component{
         webSiteName: "Sort Master"
     }
 
+    styles = {
+        fontSize: 28
+    }
+
     render(){
         return (
             <nav className="navbar navbar-dark bg-dark">
-                <h1 className="navbar-brand">{this.state.webSiteName}</h1>
+                <h1 style={this.styles} className="navbar-brand">{this.state.webSiteName}</h1>
             </nav>
         )
     }
