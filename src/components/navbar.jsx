@@ -2,13 +2,13 @@ import React, { Component } from "react";
 
 class NavBar extends Component{
     state = {
-        webSiteName: "SortMaster"
+        webSiteName: "Sort Master"
     }
 
     render(){
         return (
-            <nav class="navbar navbar-expand-sm bg-light">
-                <a class="navbar-brand">{this.state.webSiteName}</a>
+            <nav className="navbar navbar-dark bg-dark">
+                <h1 className="navbar-brand">{this.state.webSiteName}</h1>
             </nav>
         )
     }
