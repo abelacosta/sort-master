@@ -15,6 +15,9 @@ class Graph extends Component {
       { id: 8, size: 400 },
     ],
   };
+  handleResize = (size) => {
+    console.log("Event handler called", size);
+  };
   render() {
     return (
       <div className="d-flex justify-content-center">
@@ -23,7 +26,7 @@ class Graph extends Component {
             <Bar key={bar.id} size={bar.size} />
           ))}
         </div>
-        <ToolPanel />
+        <ToolPanel onResize={this.handleResize} />
       </div>
     );
   }

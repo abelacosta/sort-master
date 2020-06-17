@@ -1,13 +1,19 @@
 import React, { Component } from "react";
 
 class ToolPanel extends Component {
-  state = {};
-
   render() {
     return (
       <div className="p-2">
         <p>Number of objects:</p>
-        <input type="range" min="4" max="100" className="slider"></input>
+        <input
+          type="range"
+          onChange={(event) => {
+            this.props.onResize(event.target.value);
+          }}
+          min="4"
+          max="100"
+          className="slider"
+        ></input>
         <p>Sorting methods:</p>
         <button type="button" className="btn btn-outline-primary">
           Bubble Sort
