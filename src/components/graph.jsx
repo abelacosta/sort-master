@@ -1,19 +1,26 @@
 import React, { Component } from "react";
+import shortid from "shortid";
 import Bar from "./bar";
 import ToolPanel from "./toolpanel";
 
 class Graph extends Component {
   state = {
     bars: [],
+    maxHeight: 650,
+    minHeight: 100,
   };
 
   constructor() {
     super();
     const newBars = [];
+    let increment = Math.floor(
+      (this.state.maxHeight - this.state.minHeight) / 52
+    );
     for (let i = 0; i < 52; i++) {
-      let randomSize = Math.floor(Math.random() * Math.floor(650));
-      newBars.push({ id: i, size: randomSize });
+      let barHeight = this.state.minHeight + i * increment;
+      newBars.push({ id: shortid.generate(), size: barHeight });
     }
+    this.randomizeArray(newBars);
     this.state.bars = newBars;
   }
 
@@ -28,9 +35,12 @@ class Graph extends Component {
 
   handleResize = (size) => {
     const newBars = [];
+    let increment = Math.floor(
+      (this.state.maxHeight - this.state.minHeight) / size
+    );
     for (let i = 0; i < size; i++) {
-      let randomSize = Math.floor(Math.random() * Math.floor(650));
-      newBars.push({ id: i, size: randomSize });
+      let barHeight = this.state.minHeight + i * increment;
+      newBars.push({ id: shortid.generate(), size: barHeight });
     }
     this.randomizeArray(newBars);
     this.setState({ bars: newBars });
