@@ -4,24 +4,41 @@ import ToolPanel from "./toolpanel";
 
 class Graph extends Component {
   state = {
-    bars: [
-      { id: 1, size: 50 },
-      { id: 2, size: 100 },
-      { id: 3, size: 150 },
-      { id: 4, size: 200 },
-      { id: 5, size: 250 },
-      { id: 6, size: 300 },
-      { id: 7, size: 350 },
-      { id: 8, size: 400 },
-    ],
+    bars: [],
   };
+
+  constructor() {
+    super();
+    const newBars = [];
+    for (let i = 0; i < 52; i++) {
+      let randomSize = Math.floor(Math.random() * Math.floor(650));
+      newBars.push({ id: i, size: randomSize });
+    }
+    this.state.bars = newBars;
+  }
+
+  randomizeArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * i);
+      const temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
+  }
+
   handleResize = (size) => {
-    console.log("Event handler called", size);
+    const newBars = [];
+    for (let i = 0; i < size; i++) {
+      let randomSize = Math.floor(Math.random() * Math.floor(650));
+      newBars.push({ id: i, size: randomSize });
+    }
+    this.randomizeArray(newBars);
+    this.setState({ bars: newBars });
   };
   render() {
     return (
       <div className="d-flex justify-content-center">
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center w-75">
           {this.state.bars.map((bar) => (
             <Bar key={bar.id} size={bar.size} />
           ))}
