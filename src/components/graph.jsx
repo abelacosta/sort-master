@@ -8,7 +8,6 @@ class Graph extends Component {
     bars: [],
     maxHeight: 650,
     minHeight: 100,
-    sortMethod: "",
   };
 
   constructor() {
@@ -25,6 +24,18 @@ class Graph extends Component {
     this.state.bars = newBars;
   }
 
+  bubbleSort() {}
+
+  selectionSort() {}
+
+  insertionSort() {}
+
+  heapSort() {}
+
+  quickSort() {}
+
+  mergeSort() {}
+
   randomizeArray(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * i);
@@ -40,9 +51,23 @@ class Graph extends Component {
     this.setState({ bars: tempBars });
   };
 
-  handleChangeSortMethod = (method) => {
-    console.log("Method selected:", method);
-    this.setState({ sortMethod: method });
+  handleSort = (method) => {
+    switch (method) {
+      case "bubble":
+        break;
+      case "selection":
+        break;
+      case "insertion":
+        break;
+      case "heap":
+        break;
+      case "quick":
+        break;
+      case "merge":
+        break;
+      default:
+        break;
+    }
   };
 
   handleResize = (size) => {
@@ -67,7 +92,7 @@ class Graph extends Component {
         </div>
         <ToolPanel
           onResize={this.handleResize}
-          onMethod={this.handleChangeSortMethod}
+          onSort={this.handleSort}
           onRandomize={this.handleRandomize}
         />
       </div>

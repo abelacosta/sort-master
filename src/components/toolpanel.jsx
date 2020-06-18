@@ -27,7 +27,7 @@ class ToolPanel extends Component {
         <div className="row">
           <button
             onClick={() => {
-              this.props.onMethod("bubble");
+              this.props.onSort("bubble");
             }}
             type="button"
             className="btn btn-info col m-1"
@@ -36,7 +36,7 @@ class ToolPanel extends Component {
           </button>
           <button
             onClick={() => {
-              this.props.onMethod("selection");
+              this.props.onSort("selection");
             }}
             type="button"
             className="btn btn-info col m-1"
@@ -47,7 +47,7 @@ class ToolPanel extends Component {
         <div className="row">
           <button
             onClick={() => {
-              this.props.onMethod("insertion");
+              this.props.onSort("insertion");
             }}
             type="button"
             className="btn btn-info col m-1"
@@ -56,7 +56,7 @@ class ToolPanel extends Component {
           </button>
           <button
             onClick={() => {
-              this.props.onMethod("heap");
+              this.props.onSort("heap");
             }}
             type="button"
             className="btn btn-info col m-1"
@@ -67,7 +67,7 @@ class ToolPanel extends Component {
         <div className="row">
           <button
             onClick={() => {
-              this.props.onMethod("quick");
+              this.props.onSort("quick");
             }}
             type="button"
             className="btn btn-info col m-1"
@@ -76,7 +76,7 @@ class ToolPanel extends Component {
           </button>
           <button
             onClick={() => {
-              this.props.onMethod("merge");
+              this.props.onSort("merge");
             }}
             type="button"
             className="btn btn-info col m-1"
