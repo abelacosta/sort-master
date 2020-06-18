@@ -15,20 +15,50 @@ class ToolPanel extends Component {
           className="w-75"
         ></input>
         <h6>Sorting methods:</h6>
-        <button type="button" className="btn btn-info btn-lg m-1">
+        <button
+          onClick={() => {
+            this.props.onMethod("bubble");
+          }}
+          type="button"
+          className="btn btn-info btn-lg m-1"
+        >
           Bubble Sort
         </button>
-        <button type="button" className="btn btn-info btn-lg m-1">
+        <button
+          onClick={() => {
+            this.props.onMethod("heap");
+          }}
+          type="button"
+          className="btn btn-info btn-lg m-1"
+        >
           Heap Sort
         </button>
-        <button type="button" className="btn btn-info btn-lg m-1">
+        <button
+          onClick={() => {
+            this.props.onMethod("quick");
+          }}
+          type="button"
+          className="btn btn-info btn-lg m-1"
+        >
           Quick Sort
         </button>
-        <button type="button" className="btn btn-info btn-lg m-1">
+        <button
+          onClick={() => {
+            this.props.onMethod("merge");
+          }}
+          type="button"
+          className="btn btn-info btn-lg m-1"
+        >
           Merge Sort
         </button>
         <h6>Actions:</h6>
-        <button type="button" className="btn btn-warning btn-lg m-1">
+        <button
+          onClick={() => {
+            this.props.onRandomize();
+          }}
+          type="button"
+          className="btn btn-warning btn-lg m-1"
+        >
           Randomize
         </button>
         <button type="button" className="btn btn-success btn-lg m-1">

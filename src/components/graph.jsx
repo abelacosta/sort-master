@@ -8,6 +8,7 @@ class Graph extends Component {
     bars: [],
     maxHeight: 650,
     minHeight: 100,
+    sortMethod: "",
   };
 
   constructor() {
@@ -33,6 +34,17 @@ class Graph extends Component {
     }
   }
 
+  handleRandomize = () => {
+    const tempBars = this.state.bars;
+    this.randomizeArray(tempBars);
+    this.setState({ bars: tempBars });
+  };
+
+  handleChangeSortMethod = (method) => {
+    console.log("Method selected:", method);
+    this.setState({ sortMethod: method });
+  };
+
   handleResize = (size) => {
     const newBars = [];
     let increment = Math.floor(
@@ -53,7 +65,11 @@ class Graph extends Component {
             <Bar key={bar.id} size={bar.size} />
           ))}
         </div>
-        <ToolPanel onResize={this.handleResize} />
+        <ToolPanel
+          onResize={this.handleResize}
+          onMethod={this.handleChangeSortMethod}
+          onRandomize={this.handleRandomize}
+        />
       </div>
     );
   }
