@@ -4,15 +4,6 @@ class ToolPanel extends Component {
   render() {
     return (
       <div className="w-25 p-5">
-        <button
-          onClick={() => {
-            this.props.onRandomize();
-          }}
-          type="button"
-          className="btn btn-warning btn-lg w-100 m-1"
-        >
-          Randomize
-        </button>
         <h6>Number of objects:</h6>
         <input
           type="range"
@@ -84,6 +75,15 @@ class ToolPanel extends Component {
             Merge Sort
           </button>
         </div>
+        <button
+          onClick={() => {
+            this.props.onRandomize();
+          }}
+          type="button"
+          className="btn btn-warning btn-lg w-100 m-1"
+        >
+          Randomize
+        </button>
       </div>
     );
   }
