@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import shortid from "shortid";
 import Bar from "./bar";
 import ToolPanel from "./toolpanel";
+import {
+  bubbleSort,
+  selectionSort,
+  insertionSort,
+  quickSort,
+  mergeSort,
+  heapSort,
+} from "../utils/sortAlgorithms";
 
 class Graph extends Component {
   state = {
@@ -24,17 +32,29 @@ class Graph extends Component {
     this.state.bars = newBars;
   }
 
-  bubbleSort() {}
+  onBubbleSort() {
+    bubbleSort();
+  }
 
-  selectionSort() {}
+  onSelectionSort() {
+    selectionSort();
+  }
 
-  insertionSort() {}
+  onInsertionSort() {
+    insertionSort();
+  }
 
-  heapSort() {}
+  onHeapSort() {
+    heapSort();
+  }
 
-  quickSort() {}
+  onQuickSort() {
+    quickSort();
+  }
 
-  mergeSort() {}
+  onMergeSort() {
+    mergeSort();
+  }
 
   randomizeArray(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -54,16 +74,22 @@ class Graph extends Component {
   handleSort = (method) => {
     switch (method) {
       case "bubble":
+        this.onBubbleSort();
         break;
       case "selection":
+        this.onSelectionSort();
         break;
       case "insertion":
+        this.onInsertionSort();
         break;
       case "heap":
+        this.onHeapSort();
         break;
       case "quick":
+        this.onQuickSort();
         break;
       case "merge":
+        this.onMergeSort();
         break;
       default:
         break;
