@@ -17,7 +17,6 @@ class Graph extends Component {
     maxHeight: 650,
     minHeight: 100,
     defaultBarColor: "#17a2b8",
-    selectedColor: "red",
     sortSpeed: 3,
   };
 
@@ -75,15 +74,15 @@ class Graph extends Component {
   }
 
   animate(animation) {
-    for (let i = 0; i < animation.length; i += 3) {
+    for (let i = 0; i < animation.length; i += 2) {
+      let array = animation[i + 1];
       setTimeout(() => {
-        let leftIndex = animation[i];
-        let rightIndex = animation[i + 1];
-        let array = animation[i + 2];
         // At last step, we don't have to change colors
-        if (i < animation.length - 3) {
-          array[leftIndex].bgColor = this.state.selectedColor;
-          array[rightIndex].bgColor = this.state.selectedColor;
+        if (i < animation.length - 2) {
+          let selectedBars = animation[i];
+          for (let j = 0; j < selectedBars.length; j++) {
+            array[selectedBars[j][0]].bgColor = selectedBars[j][1];
+          }
         }
         this.setState({ bars: array });
       }, i * this.state.sortSpeed);

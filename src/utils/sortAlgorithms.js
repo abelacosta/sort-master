@@ -1,9 +1,8 @@
 import _ from "lodash";
 
-function saveHistory(animation, left, right, array) {
+function saveHistory(animation, selected, array) {
   // Save indeces of selected bars
-  animation.push(left);
-  animation.push(right);
+  animation.push(selected);
   // Save state of array
   animation.push(array);
 }
@@ -20,7 +19,11 @@ export const bubbleSort = (bars) => {
         leftBar.size = rightBar.size;
         rightBar.size = tempSize;
       }
-      saveHistory(animation, j, j + 1, _.cloneDeep(bars));
+      let selected = [
+        [j, "red"],
+        [j + 1, "red"],
+      ];
+      saveHistory(animation, selected, _.cloneDeep(bars));
     }
   }
   return animation;
@@ -28,18 +31,26 @@ export const bubbleSort = (bars) => {
 
 export const selectionSort = (bars) => {
   let animation = [];
-  for (let i = 0; i < bars.length - 1; i++) {
+  for (let i = 0; i < bars.length; i++) {
     let leftBar = bars[i];
-    for (let j = i + 1; j < bars.length; j++) {
+    let smallestIndex = i;
+    for (let j = i; j < bars.length; j++) {
       let rightBar = bars[j];
 
-      if (leftBar.size > rightBar.size) {
-        let tempSize = leftBar.size;
-        leftBar.size = rightBar.size;
-        rightBar.size = tempSize;
+      if (rightBar.size < bars[smallestIndex].size) {
+        smallestIndex = j;
       }
-      saveHistory(animation, i, j, _.cloneDeep(bars));
+
+      let selectedBars = [
+        [i, "lightgreen"],
+        [j, "red"],
+        [smallestIndex, "red"],
+      ];
+      saveHistory(animation, selectedBars, _.cloneDeep(bars));
     }
+    let tempSize = leftBar.size;
+    leftBar.size = bars[smallestIndex].size;
+    bars[smallestIndex].size = tempSize;
   }
   return animation;
 };
