@@ -1,23 +1,26 @@
-export const bubbleSort = () => {
-  console.log("Bubble sort called");
+import _ from "lodash";
+
+export const bubbleSort = (bars) => {
+  for (let i = 0; i < bars.length - 1; i++) {
+    for (let j = 0; j < bars.length - 1; j++) {
+      let leftBar = bars[j];
+      let rightBar = bars[j + 1];
+
+      if (leftBar.size > rightBar.size) {
+        let tempSize = leftBar.size;
+        leftBar.size = rightBar.size;
+        rightBar.size = tempSize;
+      }
+    }
+  }
 };
 
-export const insertionSort = () => {
-  console.log("Insertion sort called");
-};
+export const insertionSort = () => {};
 
-export const selectionSort = () => {
-  console.log("Selection sort called");
-};
+export const selectionSort = () => {};
 
-export const mergeSort = () => {
-  console.log("Merge sort called");
-};
+export const mergeSort = () => {};
 
-export const quickSort = () => {
-  console.log("Quick sort called");
-};
+export const quickSort = () => {};
 
-export const heapSort = () => {
-  console.log("Heap sort called");
-};
+export const heapSort = () => {};
