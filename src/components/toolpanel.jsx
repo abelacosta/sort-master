@@ -6,6 +6,7 @@ class ToolPanel extends Component {
       <div className="w-25 p-5">
         <h6>Number of objects:</h6>
         <input
+          id="size-range"
           type="range"
           onChange={(event) => {
             this.props.onResize(event.target.value);
@@ -17,6 +18,7 @@ class ToolPanel extends Component {
         <h6>Sorting methods:</h6>
         <div className="row">
           <button
+            id="bubble-button"
             onClick={() => {
               this.props.onSort("bubble");
             }}
@@ -26,6 +28,7 @@ class ToolPanel extends Component {
             Bubble Sort
           </button>
           <button
+            id="selection-button"
             onClick={() => {
               this.props.onSort("selection");
             }}
@@ -37,6 +40,7 @@ class ToolPanel extends Component {
         </div>
         <div className="row">
           <button
+            id="insertion-button"
             onClick={() => {
               this.props.onSort("insertion");
             }}
@@ -46,6 +50,7 @@ class ToolPanel extends Component {
             Insertion Sort
           </button>
           <button
+            id="heap-button"
             onClick={() => {
               this.props.onSort("heap");
             }}
@@ -57,6 +62,7 @@ class ToolPanel extends Component {
         </div>
         <div className="row">
           <button
+            id="quick-button"
             onClick={() => {
               this.props.onSort("quick");
             }}
@@ -66,6 +72,7 @@ class ToolPanel extends Component {
             Quick Sort
           </button>
           <button
+            id="merge-button"
             onClick={() => {
               this.props.onSort("merge");
             }}
@@ -76,6 +83,7 @@ class ToolPanel extends Component {
           </button>
         </div>
         <button
+          id="randomize-button"
           onClick={() => {
             this.props.onRandomize();
           }}

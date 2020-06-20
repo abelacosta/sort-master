@@ -16,6 +16,9 @@ class Graph extends Component {
     bars: [],
     maxHeight: 650,
     minHeight: 100,
+    defaultBarColor: "#17a2b8",
+    selectedColor: "red",
+    sortSpeed: 3,
   };
 
   constructor() {
@@ -26,14 +29,37 @@ class Graph extends Component {
     );
     for (let i = 0; i < 52; i++) {
       let barHeight = this.state.minHeight + i * increment;
-      newBars.push({ id: shortid.generate(), size: barHeight });
+      newBars.push({
+        id: shortid.generate(),
+        size: barHeight,
+        bgColor: this.state.defaultBarColor,
+      });
     }
     this.randomizeArray(newBars);
     this.state.bars = newBars;
   }
 
   onBubbleSort() {
-    bubbleSort();
+    this.disableControls();
+    let animation = bubbleSort(this.state.bars);
+    for (let i = 0; i < animation.length; i += 3) {
+      setTimeout(() => {
+        let leftIndex = animation[i];
+        let rightIndex = animation[i + 1];
+        let array = animation[i + 2];
+        // At last step, we don't have to change colors
+        if (i < animation.length - 3) {
+          array[leftIndex].bgColor = this.state.selectedColor;
+          array[rightIndex].bgColor = this.state.selectedColor;
+        }
+        this.setState({ bars: array });
+      }, i * this.state.sortSpeed);
+    }
+
+    // At this point, sort if finished
+    setTimeout(() => {
+      this.enableControls();
+    }, animation.length * this.state.sortSpeed);
   }
 
   onSelectionSort() {
@@ -63,6 +89,50 @@ class Graph extends Component {
       arr[i] = arr[j];
       arr[j] = temp;
     }
+  }
+
+  enableControls() {
+    // Get elements
+    let bubbleButton = document.getElementById("bubble-button");
+    let selectionButton = document.getElementById("selection-button");
+    let insertionButton = document.getElementById("insertion-button");
+    let heapButton = document.getElementById("heap-button");
+    let quickButton = document.getElementById("quick-button");
+    let mergeButton = document.getElementById("merge-button");
+    let randomizeButton = document.getElementById("randomize-button");
+    let sizeRange = document.getElementById("size-range");
+
+    // Disable elements
+    bubbleButton.disabled = false;
+    selectionButton.disabled = false;
+    insertionButton.disabled = false;
+    heapButton.disabled = false;
+    quickButton.disabled = false;
+    mergeButton.disabled = false;
+    randomizeButton.disabled = false;
+    sizeRange.disabled = false;
+  }
+
+  disableControls() {
+    // Get elements
+    let bubbleButton = document.getElementById("bubble-button");
+    let selectionButton = document.getElementById("selection-button");
+    let insertionButton = document.getElementById("insertion-button");
+    let heapButton = document.getElementById("heap-button");
+    let quickButton = document.getElementById("quick-button");
+    let mergeButton = document.getElementById("merge-button");
+    let randomizeButton = document.getElementById("randomize-button");
+    let sizeRange = document.getElementById("size-range");
+
+    // Disable elements
+    bubbleButton.disabled = true;
+    selectionButton.disabled = true;
+    insertionButton.disabled = true;
+    heapButton.disabled = true;
+    quickButton.disabled = true;
+    mergeButton.disabled = true;
+    randomizeButton.disabled = true;
+    sizeRange.disabled = true;
   }
 
   handleRandomize = () => {
@@ -103,7 +173,11 @@ class Graph extends Component {
     );
     for (let i = 0; i < size; i++) {
       let barHeight = this.state.minHeight + i * increment;
-      newBars.push({ id: shortid.generate(), size: barHeight });
+      newBars.push({
+        id: shortid.generate(),
+        size: barHeight,
+        bgColor: this.state.defaultBarColor,
+      });
     }
     this.randomizeArray(newBars);
     this.setState({ bars: newBars });
@@ -111,9 +185,9 @@ class Graph extends Component {
   render() {
     return (
       <div className="d-flex justify-content-center">
-        <div className="d-flex justify-content-center w-75">
+        <div name="bar-graph" className="d-flex justify-content-center w-75">
           {this.state.bars.map((bar) => (
-            <Bar key={bar.id} size={bar.size} />
+            <Bar key={bar.id} size={bar.size} color={bar.bgColor} />
           ))}
         </div>
         <ToolPanel

@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 
 class Bar extends Component {
-  styles = {
-    width: 10,
-    height: this.props.size,
-    marginLeft: 2,
-  };
+  getStyles() {
+    let styles = {
+      width: 10,
+      height: this.props.size,
+      marginLeft: 2,
+      backgroundColor: this.props.color,
+    };
+    return styles;
+  }
+
   render() {
-    return <div style={this.styles} className="bg-primary"></div>;
+    return <div style={this.getStyles()}></div>;
   }
 }
 
