@@ -40,30 +40,13 @@ class Graph extends Component {
   }
 
   onBubbleSort() {
-    this.disableControls();
     let animation = bubbleSort(this.state.bars);
-    for (let i = 0; i < animation.length; i += 3) {
-      setTimeout(() => {
-        let leftIndex = animation[i];
-        let rightIndex = animation[i + 1];
-        let array = animation[i + 2];
-        // At last step, we don't have to change colors
-        if (i < animation.length - 3) {
-          array[leftIndex].bgColor = this.state.selectedColor;
-          array[rightIndex].bgColor = this.state.selectedColor;
-        }
-        this.setState({ bars: array });
-      }, i * this.state.sortSpeed);
-    }
-
-    // At this point, sort if finished
-    setTimeout(() => {
-      this.enableControls();
-    }, animation.length * this.state.sortSpeed);
+    this.animate(animation);
   }
 
   onSelectionSort() {
-    selectionSort();
+    let animation = selectionSort(this.state.bars);
+    this.animate(animation);
   }
 
   onInsertionSort() {
@@ -89,6 +72,27 @@ class Graph extends Component {
       arr[i] = arr[j];
       arr[j] = temp;
     }
+  }
+
+  animate(animation) {
+    for (let i = 0; i < animation.length; i += 3) {
+      setTimeout(() => {
+        let leftIndex = animation[i];
+        let rightIndex = animation[i + 1];
+        let array = animation[i + 2];
+        // At last step, we don't have to change colors
+        if (i < animation.length - 3) {
+          array[leftIndex].bgColor = this.state.selectedColor;
+          array[rightIndex].bgColor = this.state.selectedColor;
+        }
+        this.setState({ bars: array });
+      }, i * this.state.sortSpeed);
+    }
+
+    // At this point, sort if finished
+    setTimeout(() => {
+      this.enableControls();
+    }, animation.length * this.state.sortSpeed);
   }
 
   enableControls() {
@@ -142,6 +146,7 @@ class Graph extends Component {
   };
 
   handleSort = (method) => {
+    this.disableControls();
     switch (method) {
       case "bubble":
         this.onBubbleSort();

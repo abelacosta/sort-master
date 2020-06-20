@@ -26,9 +26,25 @@ export const bubbleSort = (bars) => {
   return animation;
 };
 
-export const insertionSort = () => {};
+export const selectionSort = (bars) => {
+  let animation = [];
+  for (let i = 0; i < bars.length - 1; i++) {
+    let leftBar = bars[i];
+    for (let j = i + 1; j < bars.length; j++) {
+      let rightBar = bars[j];
 
-export const selectionSort = () => {};
+      if (leftBar.size > rightBar.size) {
+        let tempSize = leftBar.size;
+        leftBar.size = rightBar.size;
+        rightBar.size = tempSize;
+      }
+      saveHistory(animation, i, j, _.cloneDeep(bars));
+    }
+  }
+  return animation;
+};
+
+export const insertionSort = () => {};
 
 export const mergeSort = () => {};
 
