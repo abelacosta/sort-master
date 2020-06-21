@@ -46,6 +46,7 @@ class ToolPanel extends Component {
             }}
             type="button"
             className="btn btn-info col m-1"
+            disabled
           >
             Insertion Sort
           </button>
@@ -56,6 +57,7 @@ class ToolPanel extends Component {
             }}
             type="button"
             className="btn btn-info col m-1"
+            disabled
           >
             Heap Sort
           </button>
@@ -68,6 +70,7 @@ class ToolPanel extends Component {
             }}
             type="button"
             className="btn btn-info col m-1"
+            disabled
           >
             Quick Sort
           </button>
@@ -78,6 +81,7 @@ class ToolPanel extends Component {
             }}
             type="button"
             className="btn btn-info col m-1"
+            disabled
           >
             Merge Sort
           </button>

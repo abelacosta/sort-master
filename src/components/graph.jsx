@@ -98,20 +98,29 @@ class Graph extends Component {
     // Get elements
     let bubbleButton = document.getElementById("bubble-button");
     let selectionButton = document.getElementById("selection-button");
+    // Temporarily disabled because algorithms are not
+    // yet implemented.
+    /*
     let insertionButton = document.getElementById("insertion-button");
     let heapButton = document.getElementById("heap-button");
     let quickButton = document.getElementById("quick-button");
     let mergeButton = document.getElementById("merge-button");
+    */
     let randomizeButton = document.getElementById("randomize-button");
     let sizeRange = document.getElementById("size-range");
 
     // Disable elements
     bubbleButton.disabled = false;
     selectionButton.disabled = false;
+
+    // Temporarily disabled because algorithms are not
+    // yet implemented.
+    /*
     insertionButton.disabled = false;
     heapButton.disabled = false;
     quickButton.disabled = false;
     mergeButton.disabled = false;
+    */
     randomizeButton.disabled = false;
     sizeRange.disabled = false;
   }
