@@ -8,7 +8,7 @@ function saveHistory(animation, selected, array) {
 }
 
 export const bubbleSort = (bars) => {
-  let animation = [];
+  let history = [];
   for (let i = 0; i < bars.length - 1; i++) {
     for (let j = 0; j < bars.length - 1 - i; j++) {
       let leftBar = bars[j];
@@ -23,14 +23,14 @@ export const bubbleSort = (bars) => {
         [j, "red"],
         [j + 1, "red"],
       ];
-      saveHistory(animation, selected, _.cloneDeep(bars));
+      saveHistory(history, selected, _.cloneDeep(bars));
     }
   }
-  return animation;
+  return history;
 };
 
 export const selectionSort = (bars) => {
-  let animation = [];
+  let history = [];
   for (let i = 0; i < bars.length; i++) {
     let leftBar = bars[i];
     let smallestIndex = i;
@@ -46,13 +46,13 @@ export const selectionSort = (bars) => {
         [j, "red"],
         [smallestIndex, "red"],
       ];
-      saveHistory(animation, selectedBars, _.cloneDeep(bars));
+      saveHistory(history, selectedBars, _.cloneDeep(bars));
     }
     let tempSize = leftBar.size;
     leftBar.size = bars[smallestIndex].size;
     bars[smallestIndex].size = tempSize;
   }
-  return animation;
+  return history;
 };
 
 export const insertionSort = () => {};
