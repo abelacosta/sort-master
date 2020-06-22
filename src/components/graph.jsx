@@ -49,7 +49,8 @@ class Graph extends Component {
   }
 
   onInsertionSort() {
-    insertionSort();
+    let history = insertionSort(this.state.bars);
+    this.animate(history);
   }
 
   onHeapSort() {
@@ -98,10 +99,10 @@ class Graph extends Component {
     // Get elements
     let bubbleButton = document.getElementById("bubble-button");
     let selectionButton = document.getElementById("selection-button");
+    let insertionButton = document.getElementById("insertion-button");
     // Temporarily disabled because algorithms are not
     // yet implemented.
     /*
-    let insertionButton = document.getElementById("insertion-button");
     let heapButton = document.getElementById("heap-button");
     let quickButton = document.getElementById("quick-button");
     let mergeButton = document.getElementById("merge-button");
@@ -112,11 +113,11 @@ class Graph extends Component {
     // Disable elements
     bubbleButton.disabled = false;
     selectionButton.disabled = false;
+    insertionButton.disabled = false;
 
     // Temporarily disabled because algorithms are not
     // yet implemented.
     /*
-    insertionButton.disabled = false;
     heapButton.disabled = false;
     quickButton.disabled = false;
     mergeButton.disabled = false;
