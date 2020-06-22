@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import ghLogo from "../gh-32.png";
 
 class NavBar extends Component {
   state = {
     webSiteName: "Sort Master",
   };
+
+  imageStyle = {};
 
   render() {
     return (
@@ -14,6 +17,9 @@ class NavBar extends Component {
             {" - "}Visualize sorting algorithms in action!
           </small>
         </h1>
+        <a href="https://github.com/abelacosta/sort-master">
+          <img className="pr-3" src={ghLogo} alt="GitHub Logo"></img>
+        </a>
       </nav>
     );
   }
