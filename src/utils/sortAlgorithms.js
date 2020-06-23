@@ -78,8 +78,8 @@ export const insertionSort = (bars) => {
   return history;
 };
 
-export const mergeSort = () => {};
+export const mergeSort = (bars) => {};
 
-export const quickSort = () => {};
+export const quickSort = (bars) => {};
 
-export const heapSort = () => {};
+export const heapSort = (bars) => {};
