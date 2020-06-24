@@ -39,13 +39,13 @@ class Graph extends Component {
   }
 
   onBubbleSort() {
-    let animation = bubbleSort(this.state.bars);
-    this.animate(animation);
+    let history = bubbleSort(this.state.bars);
+    this.animate(history);
   }
 
   onSelectionSort() {
-    let animation = selectionSort(this.state.bars);
-    this.animate(animation);
+    let history = selectionSort(this.state.bars);
+    this.animate(history);
   }
 
   onInsertionSort() {
